@@ -4,5 +4,5 @@
 for api in `cat apis.txt`
 do
     echo "testing $api"
-    artillery quick --duration 3600 --rate 10 --num 1 $api &
+    artillery quick --duration 60 --rate 10 --num 1 $api &
 done

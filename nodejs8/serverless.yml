@@ -3,6 +3,8 @@ service: aws-nodejs8
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: dev
+  region: eu-west-3
 
 functions:
   hello:

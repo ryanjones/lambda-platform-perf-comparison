@@ -1,19 +1,12 @@
 #!/bin/bash
-declare -a folders=("csharp" "csharp2" "fsharp" "fsharp2" "go" "java" "python" "python3" "nodejs4" "nodejs6", "python-go")
+declare -a folders=("csharp2" "fsharp2" "go" "java" "python" "python3" "nodejs4" "nodejs6" "nodejs8")
 
-export AWS_PROFILE=default
-export AWS_REGION=us-east-1
-
-for i in `seq 1 11`;
+ROOT_DIR=$(pwd)
+for folder in "${folders[@]}"
 do
-  for folder in "${folders[@]}"
-  do
-    cd $folder
-    pwd
-    
-    sls deploy --region $AWS_REGION
-
-    cd ..
-  done
-
+  cd $folder
+  ./build.sh
+  cd ..
 done
+
+sls deploy | egrep -o "(http(s)?://){1}[^'\"]+" >> $ROOT_DIR/apis.txt
