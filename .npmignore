@@ -1,0 +1,15 @@
+.serverless/
+
+*/bin/**
+*/obj/**
+
+.idea/
+
+apis.txt
+*.iml
+*.ipr
+
+target/
+.settings/
+.project
+.classpath
