@@ -3,76 +3,19 @@ service: aaras-lambda-perfs
 provider:
   name: aws
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'eu-west-3'}
+  region: ${opt:region, 'us-east-1'}
 package:
   exclude:
     - ./**
   individually: true
 functions:
-  csharp2:
-    runtime: dotnetcore2.1
-    handler: CsharpHandlers::AwsDotnetCsharp.Handler::Hello
-    package:
-      artifact: csharp2/bin/release/netcoreapp2.1/publish/csharp.zip
-    events:
-      - http:
-          path: /csharp2
-          method: get
-  fsharp2:
-    runtime: dotnetcore2.1
-    handler: FsharpHandlers::AwsDotnetFsharp.Handler::hello
-    package:
-      artifact: fsharp2/bin/release/netcoreapp2.1/publish/fsharp.zip
-    events:
-      - http:
-          path: /fsharp2
-          method: get
-  go:
-    runtime: go1.x
-    handler: go/bin/main
+  ruby25:
+    runtime: ruby2.5
+    handler: ruby25/handler.hello
     package:
       include:
-        - go/bin/**
+        - ruby25/handler.rb
     events:
       - http:
-          path: /go
-          method: get
-  java:
-    runtime: java8
-    handler: com.serverless.Handler
-    package:
-      artifact: java/target/java-8.jar
-    events:
-      - http:
-          path: /java
-          method: get
-  nodejs4:
-    runtime: nodejs4.3
-    handler: nodejs4/handler.hello
-    package:
-      include:
-        - nodejs4/handler.js
-    events:
-      - http:
-          path: /nodejs4
-          method: get
-  nodejs6:
-    runtime: nodejs6.10
-    handler: nodejs6/handler.hello
-    package:
-      include:
-        - nodejs6/handler.js
-    events:
-      - http:
-          path: /nodejs6
-          method: get
-  nodejs8:
-    runtime: nodejs8.10
-    handler: nodejs8/handler.hello
-    package:
-      include:
-        - nodejs8/handler.js
-    events:
-      - http:
-          path: /nodejs8
+          path: /ruby25
           method: get

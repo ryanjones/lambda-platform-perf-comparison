@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -a folders=("csharp2" "fsharp2" "go" "java" "python" "python3" "nodejs4" "nodejs6" "nodejs8")
+declare -a folders=("ruby25")
 
 ROOT_DIR=$(pwd)
 for folder in "${folders[@]}"
